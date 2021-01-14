@@ -10,7 +10,7 @@ function main() {
   // If we don't have a GL context, give up now
 
   if (!gl) {
-    alert('Unable to initialize WebGL. Your browser or machine may not support it.');
+    console.log('Unable to initialize WebGL. Your browser or machine may not support it.');
     return;
   }
 
@@ -241,10 +241,10 @@ function initShaderProgram(gl, vsSource, fsSource) {
   gl.attachShader(shaderProgram, fragmentShader);
   gl.linkProgram(shaderProgram);
 
-  // If creating the shader program failed, alert
+  // If creating the shader program failed, console.log
 
   if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-    alert('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
+    console.log('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
     return null;
   }
 
@@ -269,7 +269,7 @@ function loadShader(gl, type, source) {
   // See if it compiled successfully
 
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    alert('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
+    console.log('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
     gl.deleteShader(shader);
     return null;
   }
